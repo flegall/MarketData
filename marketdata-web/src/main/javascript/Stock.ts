@@ -41,13 +41,13 @@ function parseRawVwapStream(raw$: rx.Observable<string>) : rx.Observable<Vwap>  
 }
 
 function parseRawStream(raw$: rx.Observable<string>) : rx.Observable<Quote>  {
-  return rx.Observable.empty<Quote>();
+  return raw$.map(Quote.parse);
 }
 
 function detectTrends(quote$: rx.Observable<Quote>) : rx.Observable<Trend>  {
-  return rx.Observable.empty<Trend>();
+  return quote$.zip(quote$.skip(1), (q1, q2) =>  new Trend(q2, 
+    q2.quote > q1.quote ? 'green' : 'red'));
 }
-
 
 function maxFromPrevious(quote$: rx.Observable<Quote>, nbQuotes : number) : rx.Observable<number>  {
   return rx.Observable.empty<number>();

@@ -47,7 +47,7 @@ describe("Stocks trends engine", () => {
   /**
       Test 4
   */
-  it.skip("Should parse quotes from the server", () => {
+  it("Should parse quotes from the server", () => {
     // given
     const json = "{ \"code\" : \"ibm\" , \"quote\" : 42.34 }"
     const json$ = hot<string>('-q--|', { q: json });
@@ -61,7 +61,7 @@ describe("Stocks trends engine", () => {
   /**
       Test 5
   */
-  it.skip("Should detect price getting higher", () => {
+  it("Should detect price getting higher", () => {
     // given
     const json1 = "{ \"code\" : \"ibm\" , \"quote\" : 42.34 }"
     const json2 = "{ \"code\" : \"ibm\" , \"quote\" : 42.42 }"
@@ -76,7 +76,7 @@ describe("Stocks trends engine", () => {
   /**
       Test 6
   */
-  it.skip("Should detect price getting lower", () => {
+  it ("Should detect price getting lower", () => {
     // given
     const json1 = "{ \"code\" : \"ibm\" , \"quote\" : 42.34 }"
     const json2 = "{ \"code\" : \"ibm\" , \"quote\" : 42.12 }"

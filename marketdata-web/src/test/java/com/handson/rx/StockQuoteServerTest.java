@@ -27,7 +27,6 @@ public class StockQuoteServerTest {
      * Test 3
      */
     @Test
-    @Ignore
     public void should_filter_quotes_for_requested_stock() {
         // given
         Observable<String> quoteSource

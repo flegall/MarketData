@@ -33,6 +33,7 @@ public class StockQuoteServer extends RxNettyEventServer<Quote> {
         String stockCode = request.getParameter("code");
         return stockQuoteEventStreamClient
             .readServerSideEvents()
-            .map(Quote::fromJson);
+            .map(Quote::fromJson)
+            .filter(q -> q.code.equals(stockCode));
     }
 }

@@ -25,7 +25,6 @@ public class ForexServerTest {
      * Test 1
      */
     @Test
-    @Ignore
     public void should_forward_forex_data() {
         // given
         Observable<String> forexSource
@@ -41,7 +40,6 @@ public class ForexServerTest {
      * Test 2
      */
     @Test
-    @Ignore
     public void should_forward_only_one_forex_data() {
         // given
         Observable<String> forexSource
