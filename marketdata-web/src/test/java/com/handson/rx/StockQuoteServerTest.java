@@ -46,7 +46,6 @@ public class StockQuoteServerTest {
      * Test 13
      */
     @Test
-    @Ignore
     public void should_generate_one_quote_in_euro_for_one_quote_in_dollar() {
         // given
         Observable<String> quoteSource
@@ -66,7 +65,6 @@ public class StockQuoteServerTest {
      * Test 14
      */
     @Test
-    @Ignore
     public void should_generate_quotes_in_euro_using_latest_known_foreign_exchange_rate() {
         // given
         Observable<String> quoteSource
@@ -86,7 +84,6 @@ public class StockQuoteServerTest {
      * Test 15
      */
     @Test
-    @Ignore
     public void should_unsubscribe_to_forex_stream_when_unscribing_to_quote() {
         // given
         Observable<String> quoteSource

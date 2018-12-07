@@ -27,7 +27,6 @@ public class StockServerTest {
      * Test 7
      */
     @Test
-    @Ignore
     public void should_send_a_stock_message_when_receiving_a_quote() {
         // given
         Observable<String> quoteSource
@@ -43,7 +42,6 @@ public class StockServerTest {
      * Test 8
      */
     @Test
-    @Ignore
     public void should_send_a_stock_message_only_once_when_receiving_two_quotes_for_the_same_stock() {
         // given
         Observable<String> quoteSource
@@ -63,7 +61,6 @@ public class StockServerTest {
      * Test 9
      */
     @Test
-    @Ignore
     public void should_stop_stream_after_10_seconds() {
         // given
         Observable<String> quoteSource = Observable.never();

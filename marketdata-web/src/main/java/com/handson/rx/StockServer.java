@@ -30,6 +30,13 @@ public class StockServer extends RxNettyEventServer<Stock> {
 
     @Override
     protected Observable<Stock> getEvents(HttpRequest request) {
-        return Observable.never();
+        Observable<Long> timer = Observable.timer(10, TimeUnit.SECONDS, this.scheduler);
+        return this.quoteEventStreamClient
+                .readServerSideEvents()
+                .map(Quote::fromJson)
+                .distinct(q -> q.code)
+                .flatMap(q -> this.stockClient.request(q.code))
+                .map(Stock::fromJson)
+                .takeUntil(timer);
     }
 }

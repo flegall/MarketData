@@ -25,6 +25,10 @@ public class VwapServer extends RxNettyEventServer<Vwap> {
     @Override
     protected Observable<Vwap> getEvents(HttpRequest request) {
         String stockCode = request.getParameter("code");
-        return Observable.never();
+        return this.tradeEventStreamClient.readServerSideEvents()
+                .map(Trade::fromJson)
+                .filter(t -> t.code.equals(stockCode))
+                .scan(new Vwap(stockCode), Vwap::addTrade)
+                .sample(1, TimeUnit.SECONDS, this.scheduler);
     }
 }
